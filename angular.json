@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",              
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -97,6 +98,16 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "SalaDeJuegos:build:production",
+            "firebaseProject": "tp-sala-de-juegos-ea7d0",
+            "firebaseHostingSite": "tp-sala-de-juegos-ea7d0"
           }
         }
       }

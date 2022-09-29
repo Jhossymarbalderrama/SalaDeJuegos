@@ -1,0 +1,46 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div class="box">
+      
+            <div class="row chat-window col-md-12" id="chat_window_1" style="margin-left:10px;">
+                <div class="col-xs-12 col-md-12">
+                    <div class="panel panel-default">
+        
+                        <div class="panel-body msg_container_base">
+                            <div *ngFor="let item of this.Chat.items">
+                                <div class="row msg_container base_sent" *ngIf='this.AuthService.usuarioLogueado.correo == item.user'>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="messages msg_sent">
+                                            <h6>Yo</h6>
+                                            <p>{{item.message}}</p>
+                                            <time>{{item.date}}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf='this.AuthService.usuarioLogueado.correo != item.user'>
+                                    <div class="row msg_container base_receive">
+                                        <div class="col-md-10 col-xs-10">
+                                            <div class="messages msg_receive">
+                                                <h6>{{item.user}}</h6>
+                                                <p>{{item.message}}</p>
+                                                <time>{{item.date}}</time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+        <div class="panel-footer">
+            <div class="input-group">
+                <input id="btn-input" type="text" class="form-control input-sm chat_input" [(ngModel)]="this.mensaje.message" placeholder="Ingrese su mensaje" />
+                <!-- <input id="btn-input" type="text" class="form-control input-sm chat_input"  [(ngModel)]="this.mensaje.message" placeholder="Ingrese su mensaje" /> -->
+                <div>
+                    <button class="buttons" (click)="sendMessage()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>	
+</div>
+

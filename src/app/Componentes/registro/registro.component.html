@@ -1,0 +1,67 @@
+<div class="background">
+	<div class="d-grid gap-2 col-12 mx-auto">
+		<div class="container">
+			<div class="box">
+				<h1 style="text-align: center;font-weight: bold;margin-bottom: 20px;">REGISTRO</h1>
+				<form [formGroup]="formRegistro" (submit)="registrarse()" errorTailor>
+					<div class="user-box">								
+						<input type="text" id="correo" formControlName="correo" name="" required=""
+						[controlErrorsTpl]="correoError"
+						/>						
+						<label>Correo</label>					
+					</div>		
+					<div *ngIf="this.userExist" style="padding-bottom: 10px;">
+						<i class="errorForms">*Ya existe una cuenta con este correo</i>
+					</div>							
+
+					<div class="user-box">
+						<input type="password" id="clave"  formControlName="clave" name="" required=""
+						[controlErrorsTpl]="claveError"
+						/>
+						<label>Contraseña</label>
+					</div>				
+
+					<div class="user-box">
+						<input type="password"  id="claveReingreso" formControlName="claveReingreso" name="" required=""
+						[controlErrorsTpl]="claveReingresoError"
+						/>
+						<label>Reingrese Contraseña</label>
+					</div>			
+			
+					<button class="buttons">registrarse</button>
+				</form>	
+				<hr>
+				<button class="buttons" style="color: white;text-align: center;opacity: 80%;font-weight: bold;" (click)="volverLogin()">Volver a Login</button>			
+			</div>
+						
+		</div>
+	</div>	
+</div>
+
+
+<ng-template let-error let-text="text" #correoError>	
+	<div *ngIf="error?.required">
+		<i class="errorForms">*Correo Invalido</i>
+	</div>					
+</ng-template>
+
+<ng-template let-error let-text="text" #claveError>
+	<div *ngIf="error?.minlength">
+		<i class="errorForms">*Ingrese una clave con al menos 6 caracteres</i>
+	</div>	
+	<div *ngIf="error?.required">
+		<i class="errorForms">*Clave requerido</i>
+	</div>					
+</ng-template>
+
+<ng-template let-error let-text="text" #claveReingresoError>
+	<div *ngIf="error?.required">
+		<i class="errorForms">*Reingreso de clave requerido</i>
+	</div>	
+	<div *ngIf="this.claveVerificada">
+		<i class="errorForms">*Reingrese clave.</i>
+	</div>
+</ng-template>
+
+
+

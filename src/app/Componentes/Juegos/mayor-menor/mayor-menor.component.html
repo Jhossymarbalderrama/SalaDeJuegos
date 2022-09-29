@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div class="box">        
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1">
+            <div class="col" align="center">
+                <h1>PUNTOS</h1>
+                <h1>{{this.puntosSistema}} | {{this.puntosMios}}</h1>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2">
+
+            <div class="col" align="start">
+                <h4>Sistema</h4>
+                <div class="sistemaCard">
+                    <img [src]="cartaSistema.img" height="216px" width="140px">
+                </div>
+            </div>
+
+            <div class="col" align="end">
+
+                <h4>Tú</h4>
+                <div class="tuCard">
+                    <img [src]="cartaMia.img" height="216px" width="140px">                    
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 botones" align="center">
+
+            <div class="col">
+                <button class="button" (click)="iniciarJuego()" [disabled] = 'this.disabledIniciarJuego'>Iniciar Juego</button>
+            </div>
+
+            <div class="col">
+                <button class="button" (click)="compracionMayorMenor('mayor')" [disabled] = 'this.disabledMayorMenor'>Mayor</button>
+            </div>
+
+            <div class="col">
+                <button class="button" (click)="compracionMayorMenor('menor')" [disabled] = 'this.disabledMayorMenor'>Menor</button>
+            </div>
+
+        </div>      
+    </div>	
+</div>
+

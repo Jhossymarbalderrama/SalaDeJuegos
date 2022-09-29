@@ -1,0 +1,112 @@
+.container{  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;	 
+}
+
+
+.box {	
+    height: auto;
+
+    
+    margin-top: 6em;
+    padding:  5em;	
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
+    max-width: 100%;	
+
+    backdrop-filter: blur(1px);
+    background-color: rgba(255, 255, 255, 0.597);
+    z-index: 50;
+}
+
+.box-reinicio {	
+    margin-top: 6em;
+    padding:  2em;	
+    border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+    max-width: 100%;	
+    
+    backdrop-filter: blur(1px);
+    background-color: rgba(255, 255, 255, 0.597);
+    z-index: 51;
+ }
+
+.teclado
+{
+    padding:  0.5em;	
+    border-radius: 10px;
+    background-color: #0b3a879f;
+    align-content: center; 
+    margin-left: auto; 
+    margin-right: auto;
+
+    height: auto;
+    width: 580px;
+    border-radius: 5px;
+}
+
+.palabra{
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+
+.btn{
+    background-color: #222;
+    cursor: pointer;
+    color: white;
+    width: 48px;
+}
+
+.btn:hover{
+    background-color: #07275c;
+    cursor: pointer;
+    color: white;
+} 
+
+.btn:active{
+    background-color: #07275c;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 2px #222;
+    color: white;
+    transform: scale(0.85);
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.button {
+	border-radius: 1em;
+	border: 1px solid #07275c;
+	background-color: #07275c;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0.5em 2em 0.5em 2em;
+
+	cursor: pointer;	
+}
+
+
+.button:hover{
+    background-color: #073277db;
+    cursor: pointer;
+    color: white;
+} 
+
+.button:active {
+	transform: scale(0.95);
+}
+
+.button:focus {
+	outline: none;
+}

@@ -1,0 +1,92 @@
+h4{
+    font-weight: bold;
+    color: #202326;
+}
+
+.container{  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;	 
+}
+
+
+
+.box {	
+
+    height: auto;
+
+    background: url("../../../../assets/img/juegos/mayor menor/fondo-mesa-poker-color-verde.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    margin-top: 6em;
+    padding:  5em;	
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
+    width: 1300px;	
+
+    backdrop-filter: blur(1px);
+    background-color: rgba(255, 255, 255, 0.597);
+    z-index: 50;
+}
+
+.botones{
+    padding-top: 30px;
+}
+
+.button {
+	border-radius: 1em;
+	border: 1px solid #07275c;
+	background-color: #07275c;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0.5em 2em 0.5em 2em;
+
+    width: 200px;
+
+	cursor: pointer;	
+}
+
+
+.button:hover{
+    background-color: #07275c;
+    cursor: pointer;
+    color: white;
+} 
+
+.button:enabled:active {
+	background-color: #07275c;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 2px #222;
+    color: white;
+    transform: scale(0.85);
+}
+
+.button:focus {
+	outline: none;
+}
+
+button:disabled{
+    opacity: 50%;
+}
+
+
+.puntos{
+    font-weight: bold;
+    font-size: 18px;    
+    margin-top: 0.5em;
+}
+
+.cartasSistema{
+    padding-right: 30px;
+}

@@ -1,0 +1,50 @@
+<div class="background">
+	<div class="d-grid gap-2 col-12 mx-auto">
+		<div class="container">
+			<div class="box">
+				<form [formGroup]="formLogin" (submit)="login()" errorTailor>
+					<h1 style="text-align: center;font-weight: bold;padding-bottom: 10px;">INICIAR SESIÓN</h1>
+
+					<div class="user-box">		
+						<input type="text" id="correo" formControlName="correo" name="" required=""
+						[controlErrorsTpl]="correoError"
+						/>
+						<label>Correo</label>
+					</div>
+
+					<div class="user-box">		
+						<input type="password" id="clave"  formControlName="clave" name="" required=""
+						[controlErrorsTpl]="claveError"
+						/>
+						<label>Contraseña</label>
+					</div>
+
+					<div *ngIf="!this.existeUsuario">
+						<i class="errorForms">El usuario no existe</i>
+					</div>
+					<button class="buttons">Entrar</button>
+				</form>
+				<hr>
+				<p style="color: black;text-align: center;opacity: 70%;font-weight: bold;">¿Aún no estas Registrado?</p>
+				<button class="buttons" style="color: white;text-align: center;opacity: 80%;font-weight: bold;" (click)="registrarse()">¡Regístrese ahora!</button>
+				<hr>
+				
+				<button class="bAccesoRapido" (click)="onLoginAuto(1)">Invitado 1</button>
+
+				<button class="bAccesoRapido" (click)="onLoginAuto(2)">Invitado 2</button>
+			</div>	
+		</div>
+	</div>	
+</div>
+
+<ng-template let-error let-text="text" #correoError>	
+	<div *ngIf="error?.required">
+		<i class="errorForms">*Correo requerido</i>
+	</div>				
+</ng-template>
+
+<ng-template let-error let-text="text" #claveError>	
+	<div *ngIf="error?.required">
+		<i class="errorForms">*Clave requerido</i>
+	</div>					
+</ng-template>

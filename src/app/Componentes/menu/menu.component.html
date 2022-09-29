@@ -1,0 +1,39 @@
+<div class="menu">
+    <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div style="text-align: start;" >
+            <a routerLink="/home" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" style="margin-right: 2em;cursor: pointer;">      
+                <img src="../../../favicon.ico" height="65px">
+            </a>
+        </div>
+    
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li>
+                <a class="nav-link px-2 text-secondary item-menu" routerLink="/home"> Home</a>
+            </li>       
+    
+            <li class="dropdown"><a class="nav-link px-2 text-white">Juegos</a>
+                <div class="dropdown-content">
+                  <a routerLink="/juegos/ahorcado">Ahorcado</a>
+                  <a routerLink="/juegos/mayor-menor">Mayor o Menor</a>
+                  <a routerLink="/juegos/preguntados">Preguntados</a>
+                  <a routerLink="/juegos/black-jack">Black Jack</a>
+                </div>
+            </li>
+    
+            <li>
+                <a class="nav-link px-2 text-white item-menu" routerLink="/chat">Chats</a>
+            </li>
+    
+            <li>
+                <a class="nav-link px-2 text-white item-menu" routerLink="/quienSoy">Quien Soy</a>
+            </li>
+    
+            
+        </ul>
+    
+        <a style="color: white;opacity: 50%;padding-right: 15px;">¡Bienvenido {{this.usuarioLogin.correo}}!</a>
+        <button type="button" class="btn button" routerLink="/login">Cerrar Sesion</button>      
+    </nav>  
+    
+</div>
+

@@ -1,0 +1,19 @@
+.container{  
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 min-height: 100vh;	 
+}
+
+
+.box {	
+	margin-top: 10em;
+	padding:  2em;	
+	border-radius: 10px;
+	  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	max-width: 100%;	
+	
+	backdrop-filter: blur(1px);
+	background-color: rgba(255, 255, 255, 0.597);
+}

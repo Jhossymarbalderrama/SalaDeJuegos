@@ -1,0 +1,74 @@
+.menu{
+	width: 100%;
+	padding: 2em 2em 2em 2em;
+	padding-left: 5em;
+	padding-right: 5em;
+	position: absolute;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+
+.item-menu{
+	cursor: pointer;
+}
+
+.button {
+	border-radius: 1em;
+	border: 1px solid #07275c;
+	background-color: #07275c;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0.5em 2em 0.5em 2em;
+
+	cursor: pointer;	
+}
+
+
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;	
+	cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #bcc4cdab;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+	cursor: pointer;
+}
+
+.dropdown-content a {
+	
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #212529d0;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

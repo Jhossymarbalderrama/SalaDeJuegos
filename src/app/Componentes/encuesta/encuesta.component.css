@@ -1,0 +1,118 @@
+.container{  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;	 
+}
+
+
+.box {	
+    margin-top: 10em;
+    padding:  2em;	
+    border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+    max-width: 100%;	
+    
+    backdrop-filter: blur(1px);
+    background-color: rgba(255, 255, 255, 0.597);
+}
+
+
+.input-class {
+	background-color: #eee;
+	border: none;
+	padding: 10px;
+	margin: 10px;
+	width: 100%;	
+	border-radius: 1em;
+}
+
+
+.user-box{
+	display: block;
+	align-items: center;
+	justify-content: center;;	 
+
+	position: relative;
+	padding-bottom: 10px;	
+	margin: -10px -10px;
+	margin-right: 10px;
+	
+}
+
+.user-box input{
+	width: 100%;
+	padding: 10px 10px;
+	font-size: 16px;	
+	border: none;
+	outline: none;
+}
+.user-box label{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 21px 21px;
+	font-size: 16px;
+	color: #777777;	
+	pointer-events: none;
+	transition: .5s;
+	
+}
+
+.user-box input:focus ~ label,
+.user-box input:valid ~ label{
+	top: -22px;
+	left: 0;
+	color: rgba(0, 0, 0, 0.659);
+	font-size: 14px;
+	font-weight: bold;	
+}
+
+.user-box .ng-touched{
+	border: 2.5px solid rgb(216, 54, 26);
+}
+
+.user-box .ng-valid{
+	border: 2.5px solid rgb(62, 211, 62);
+}
+
+.errorForms{	
+	color: rgb(216, 54, 26);
+	margin-left: 10px;
+}
+
+
+.buttons {
+	width: 100%;
+	border-radius: 1em;
+	border: 1px solid #07275c;
+	background-color: #07275c;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 12px 45px;
+	margin-top: 5px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;	
+}
+
+
+.buttons:hover{
+    background-color: #0a4199ce;
+    cursor: pointer;
+    color: white;
+} 
+
+.buttons:active {
+	transform: scale(0.95);
+}
+
+.buttons:focus {
+	outline: none;
+} 

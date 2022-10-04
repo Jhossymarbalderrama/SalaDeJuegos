@@ -3,88 +3,84 @@
 <div class="container">
     <div class="box">   
 
-        <!-- Preguntados -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1">
-            <div class="col" align="center">
-                <h2>Preguntados - Los Simpsons</h2>
-                <h3 *ngIf="this.habilitado">¿Como se llama este Personaje?</h3>
-                <h3 *ngIf="!this.habilitado">Buscando personaje...</h3>
+        <!-- Puntaje -->
+        <div style="width: 100%;">  
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2" align="center">
+                <div class="col"> 
+                    <div align="start" style="font-weight: bold;color: black;">
+                        <h4>Puntos: {{this.puntosGame}}</h4>                    
+                    </div>
+                </div>
+                <div class="col"> 
+                    <div align="end" style="font-weight: bold;color: black;">
+                        <h4>Fallos: {{this.fallosGame}}/3</h4>                    
+                    </div>
+                </div>
+            </div>                     
+        </div>
 
-                <div class="preguntados">
-                    <img [src]="this.personajeIMG" height="260px" width="auto">
+        <!-- Preguntados -->
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1" align="center">
+            <div class="col">
+                <h1>Preguntados - Los Simpsons</h1>
+                <h2 *ngIf="this.habilitado && this.fallosGame != this.fallosTotalesDelJuego">
+                    ¿Como se llama este Personaje?
+                </h2>
+                <h2 *ngIf="!this.habilitado && this.fallosGame != this.fallosTotalesDelJuego">
+                    Buscando personaje...
+                </h2>
+                <h2 *ngIf="this.fallosGame == this.fallosTotalesDelJuego">Ups perdiste...</h2>
+                <div class="preguntados"  style="margin-top: 15px;">
+                    <img *ngIf="this.fallosGame != this.fallosTotalesDelJuego" 
+                    [src]="this.personajeIMG" height="260px" width="auto">
+
+                    <img *ngIf="this.fallosGame == this.fallosTotalesDelJuego"
+                    [src]="this.problemasTecnicosIMG" height="260px" width="auto">
                 </div>                
             </div>
         </div>
 
         <!-- Botones -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-
-            <div class="col" align="center">
-                <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[0])" [disabled] = 'this.botonesHabilitados'>                       
-                    <a *ngIf="!this.habilitado"> . . . </a>
-                    <a *ngIf="this.habilitado">{{this.listOpciones[0]}}</a>                    
-                </button>
-            </div>            
-                
-            <div class="col" align="center">
-                <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[1])" [disabled] = 'this.botonesHabilitados'>
-                    <a *ngIf="!this.habilitado"> . . . </a>
-                    <a *ngIf="this.habilitado">{{this.listOpciones[1]}}</a>  
-                </button>
-            </div>
-
-            <div class="col" align="center">
-                <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[2])" [disabled] = 'this.botonesHabilitados'>
-                    <a *ngIf="!this.habilitado"> . . . </a>
-                    <a *ngIf="this.habilitado">{{this.listOpciones[2]}}</a>  
-                </button>
-            </div>
-
-            <div class="col" align="center">
-                <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[3])" [disabled] = 'this.botonesHabilitados'>
-                    <a *ngIf="!this.habilitado"> . . . </a>
-                    <a *ngIf="this.habilitado">{{this.listOpciones[3]}}</a>  
-                </button>
-            </div>                   
+        <div *ngIf="this.fallosGame != 3">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4" style="margin-top: 15px;">            
+                <div class="col" align="center">
+                    <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[0])" [disabled] = 'this.botonesHabilitados'>                       
+                        <a *ngIf="!this.habilitado"> . . . </a>
+                        <a *ngIf="this.habilitado">{{this.listOpciones[0]}}</a>                    
+                    </button>
+                </div>            
                     
+                <div class="col" align="center">
+                    <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[1])" [disabled] = 'this.botonesHabilitados'>
+                        <a *ngIf="!this.habilitado"> . . . </a>
+                        <a *ngIf="this.habilitado">{{this.listOpciones[1]}}</a>  
+                    </button>
+                </div>
+
+                <div class="col" align="center">
+                    <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[2])" [disabled] = 'this.botonesHabilitados'>
+                        <a *ngIf="!this.habilitado"> . . . </a>
+                        <a *ngIf="this.habilitado">{{this.listOpciones[2]}}</a>  
+                    </button>
+                </div>
+
+                <div class="col" align="center">
+                    <button class="btn btn-dark btn-opciones" (click)="this.compararOpcion(this.listOpciones[3])" [disabled] = 'this.botonesHabilitados'>
+                        <a *ngIf="!this.habilitado"> . . . </a>
+                        <a *ngIf="this.habilitado">{{this.listOpciones[3]}}</a>  
+                    </button>
+                </div> 
+            </div>
         </div>
-
-        <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1">
-            <div class="col" align="center">               
-                <div>                    
-                    <button class="btn btn-dark button" 
-                    (click)="iniciarJuego()"
-                    [disabled] = 'this.disabledIniciarJuego'
-                    >Iniciar Juego</button>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- 
-            <div class="divpregunta" *ngIf="estaJugando" >
-                <div class="preguntas" *ngIf="this.paisElegidoRespuesta">
-                    <h3>A que pais pertenece esta bandera?</h3>
-                    <h5>Puntos:{{puntos}}</h5>
-                </div>
-                <div class="imagen shadow">
-                    <img [src]="paisElegidoRespuesta.flags.png" alt="" width="200px" height="150px">
-                </div>
-                <div class="opciones" *ngFor="let paisOpcion of paisesOpciones">
-                    <button type="button" class="btn btn-primary" style="margin-bottom: 5px;" (click)="elegirPais(paisOpcion)">{{paisOpcion.translations.spa.official}}</button>
-                </div>
-            </div>
-            <div  *ngIf="!estaJugando">
-                <button (click)="nuevoJuego()" class="btn btn-primary " type="button" id="button-nuevo">
-                        Nuevo juego</button>
-            </div>
-            <div onclick="this.blur();"  *ngIf="estaJugando">
-                <button  (click)="detenerJuego()" class="btn btn-danger " type="button">
-                        Finalizar</button>
-            </div>
         
-            <div *ngIf="mostrarR">
-                <button (click)="obtenerYCrearResultado()">Mandar resultados</button>
+        <div *ngIf="this.fallosGame == 3">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1" style="margin-top: 15px;">
+                <div class="col" align="center">
+                    <button class="btn btn-dark btn-opciones" (click)="this.reinicioPartida()">
+                        <a>Reiniciar Juego</a>                       
+                    </button>
+                </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </div>

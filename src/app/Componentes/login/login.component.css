@@ -1,3 +1,7 @@
+*{
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 p{
 	color: rgb(165, 160, 160);
 	padding: 12px 10px;
@@ -54,30 +58,23 @@ input {
 	cursor: pointer;	
 }
 
-.bAccesoRapido{
-	width: 35%;
-	font-size: 10px;
-	font-weight: bold;
-	margin-left: 10%;
-	color: #FFFFFF;
-	border-radius: 1em;
-	border: 1px solid #07275c;
-	background-color: #07275c;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-	opacity: 80%;
-	padding: 10px;
+
+
+.buttons:hover{
+    background-color: #0a4199ce;
+    cursor: pointer;
+    color: white;
+} 
+
+.buttons:active {
+	transform: scale(0.95);
+}
+
+.buttons:focus {
+	outline: none;
 }
 
 
-.buttons:active, .bAccesoRapido:active {
-	transform: scale(0.95);	
-}
-
-.buttons:focus, .bAccesoRapido:focus {
-	outline: none;	
-}
 
 
 /* Inputs */
@@ -150,7 +147,7 @@ input {
 
 
 /* Celular */
-@media only screen and (max-width:600px){
+@media only screen and (max-width:767px){
 	.box {
 		padding: 2em 2em 2em 2em;
 		border-radius: 10px;
@@ -166,7 +163,7 @@ input {
 }
 
 /* Tabled */
-@media only screen and (max-width:768px){
+@media only screen and (min-width:767px) and (max-width: 1023px){
 	.box {
 		padding: 2em 2em 2em 2em;
 		border-radius: 10px;
@@ -181,24 +178,8 @@ input {
 	}
 }
 
-/* Laptop */
-@media only screen and (max-width:992px){
-	.box {
-		padding: 2em 2em 2em 2em;
-		border-radius: 10px;
-		  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-				0 10px 10px rgba(0,0,0,0.22);
-		overflow: hidden;
-		max-width: 90%;	
-		width: 100%;
-		
-		backdrop-filter: blur(1px);
-		background-color: rgba(255, 255, 255, 0.597);	
-	}
-}
-
 /* Large Screen */
-@media only screen and (min-width:1200px){
+@media only screen and (min-width:1024px){
 	.box {
 		padding: 2em 2em 2em 2em;
 		border-radius: 10px;

@@ -1,0 +1,123 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div class="box">
+
+        <div style="width: 100%;">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1" align="start">
+                <div class="col">
+                    <h1 style="text-align: center;font-weight: bold;margin-bottom: 20px;">ENCUESTA</h1>
+                    <hr>
+                    <h4>Datos Personales</h4>
+                    <form [formGroup]="formEncuesta" (submit)="this.enviar()" errorTailor>                        
+                        <div class="user-box">
+                            <input class="input-class" type="text" formControlName="nombre" id="nombre" name="" required="" 
+                            [controlErrorsTpl]="eNombre"
+                            />
+                            <label>Nombre</label>
+                        </div>
+
+                        <div class="user-box">
+                            <input class="input-class" type="text" formControlName="apellido" id="apellido" name="" required="" 
+                            [controlErrorsTpl]="eApellido"
+                            />
+                            <label>Apellido</label>
+                        </div>
+
+                        <div class="user-box">
+                            <input class="input-class" type="number" formControlName="edad" id="edad" name=""  required="" 
+                            [controlErrorsTpl]="eEdad"
+                            />
+                            <label>Edad</label>
+                        </div>
+
+                        <div align="center">
+                            <hr>
+                            <h4>¿Que otro juego le gustaria que agreguemos?</h4>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"  formControlName="pregunta_1" [controlErrorsTpl]="eCheckValue"
+                                    value="Viborita">
+                                <label class="form-check-label" for="inlineRadio1">Viborita</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" formControlName="pregunta_1" [controlErrorsTpl]="eCheckValue"
+                                    value="Ping Pong">
+                                <label class="form-check-label" for="inlineRadio2">Ping Pong</label>                                
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" formControlName="pregunta_1" [controlErrorsTpl]="eCheckValue"
+                                    value="PacMan">
+                                <label class="form-check-label" for="inlineRadio2">PacMan</label>
+                            </div>
+                        </div>
+                        <input class="form-check-input" type="hidden" value="" formControlName="pregunta_1" required [controlErrorsTpl]="eCheck"> 
+
+                        <div>
+                            <hr>
+                            <h4>¿Te parecio interesante las charlas en el Chat?</h4>
+                            <select class="form-select" formControlName="pregunta_2" [controlErrorsTpl]="eListBox">
+                                <option value="No">No</option>
+                                <option value="Si">Si</option>                            
+                            </select>
+                        </div>
+
+                        <div align="center">
+                            <hr>
+                            <h4>Valoracion de la Página</h4>
+                            <ngb-rating [rate]="3" style="font-size: 38px;" formControlName="pregunta_3" [controlErrorsTpl]="eValoracion"></ngb-rating>                        
+                        </div>
+                        <hr>
+                        <button class="buttons">Enviar</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Validaciones -->
+        <ng-template let-error let-text="text" #eNombre>	
+            <div *ngIf="error?.required">
+                <i class="errorForms">*Ingrese su nombre</i>
+            </div>					
+        </ng-template>
+
+        <ng-template let-error let-text="text" #eApellido>	
+            <div *ngIf="error?.required">
+                <i class="errorForms">*Ingrese su apellido</i>
+            </div>					
+        </ng-template>
+
+        <ng-template let-error let-text="text" #eEdad>	
+            <div *ngIf="error?.required">
+                <i class="errorForms">*Ingrese una edad</i>
+            </div>					
+        </ng-template>
+        
+        <ng-template let-error let-text="text" #eCheck>	
+            <div *ngIf="error?.required">
+                <i class="errorForms">*Seleccione un campo</i>
+            </div>					
+        </ng-template>
+        
+        <ng-template let-error let-text="text" #eCheckValue>	
+            <div *ngIf="error?.required">
+                <i class="errorForms"></i>
+            </div>					
+        </ng-template>
+
+        <ng-template let-error let-text="text" #eListBox>	
+            <div *ngIf="error?.required">
+                <i class="errorForms">*Seleccione un campo</i>
+            </div>					
+        </ng-template>
+
+
+        <ng-template let-error let-text="text" #eValoracion>	
+            <div *ngIf="error?.required">
+                <i class="errorForms">*Seleccione un campo</i>
+            </div>					
+        </ng-template>
+    </div>
+</div>

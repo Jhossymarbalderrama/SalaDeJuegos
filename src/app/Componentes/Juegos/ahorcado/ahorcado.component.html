@@ -2,31 +2,20 @@
 
 <div class="container">
 
-    <div class="box">  
-        <!-- <div *ngFor="let palabra of this.pListaPalabrasAPI.body[0].Related">
-            {{palabra.Word}}
-            <br>
-        </div> -->
+    <div class="box">     
+
+        <div align="end" style="font-weight: bold;color: black;">
+            <h4>Puntos: {{this.puntosGame}}</h4>                    
+        </div>
 
         <div align="center" style="font-weight: bold;color: black;">
-            <h2>AHORCADO</h2>
-            <h3>"La palabra tiene {{this.generandoPalabra.length}} Letras"</h3>            
+            <h1>AHORCADO</h1>
+            <h2>"La palabra tiene {{this.generandoPalabra.length}} Letras"</h2>         
+            <h2 *ngIf="this.disabled && this.fallos == 6">Tu palabra era: {{this.palabra}}</h2>         
         </div>
 
         <div id="ahorcado">
-            <img *ngIf="this.fallos == 0" src="../../../../assets/img/juegos/ahorcado/base.png" height="450px">
-
-            <img *ngIf="this.fallos == 1" src="../../../../assets/img/juegos/ahorcado/cabeza.png" height="450px">
-
-            <img *ngIf="this.fallos == 2" src="../../../../assets/img/juegos/ahorcado/cuerpo.png" height="450px">
-
-            <img *ngIf="this.fallos == 3" src="../../../../assets/img/juegos/ahorcado/brazo1.png" height="450px">
-
-            <img *ngIf="this.fallos == 4" src="../../../../assets/img/juegos/ahorcado/brazo2.png" height="450px">
-
-            <img *ngIf="this.fallos == 5" src="../../../../assets/img/juegos/ahorcado/pie1.png" height="450px">
-
-            <img *ngIf="this.fallos == 6" src="../../../../assets/img/juegos/ahorcado/pie2.png" height="450px">
+            <img [src]="this.imagesAhorcado" alt="" class="imgAhorcado">
         </div>
         
         <div class="teclado" align="center">

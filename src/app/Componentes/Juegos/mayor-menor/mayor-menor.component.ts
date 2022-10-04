@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ApiRestService } from 'src/app/Servicios/api-rest.service';
+import { FirestoreService } from 'src/app/Servicios/firestore.service';
+import { AuthService } from 'src/app/Servicios/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-mayor-menor',
@@ -7,6 +11,10 @@ import { ApiRestService } from 'src/app/Servicios/api-rest.service';
   styleUrls: ['./mayor-menor.component.css']
 })
 export class MayorMenorComponent implements OnInit {
+
+  fallosGame: number = 0;
+  puntosGame: number = 0;
+
 
   cartaSistema: any;
   cartaMia: any;
@@ -17,15 +25,18 @@ export class MayorMenorComponent implements OnInit {
   cartas : any;
   cartasSinCartaSistema : any;
 
-  puntosSistema: number = 0;
   puntosMios: number = 0;
 
 
   disabledMayorMenor:boolean = true;
   disabledIniciarJuego:boolean = true;
-
+  reiniciarGame:boolean = false;
+  
   constructor(
-    private ApiRestService: ApiRestService
+    private ApiRestService: ApiRestService,
+    private FirestoreService: FirestoreService,
+    private AuthService: AuthService,
+    private ToastrService:ToastrService
   ) {    
     
     this.reiniciar();
@@ -85,25 +96,64 @@ export class MayorMenorComponent implements OnInit {
 
     switch (comparacion) {
       case 'mayor': 
-        if(this.cartaMia.valor>this.cartaSistema.valor){
-          this.puntosMios++;
+        if(this.cartaMia.valor>this.cartaSistema.valor){ 
+          this.puntosMios += 50;  
+          this.mayorGanasteToast();    
+        }else if(this.cartaMia.valor==this.cartaSistema.valor){
+          this.empateToast();
         }else{
-          this.puntosSistema++;
+          this.fallosGame++;
+          this.menorPerdisteToast();
+          if(this.fallosGame == 3){
+            this.tresFallos();
+          }
         }
+
         break;
     
       case 'menor':
         if(this.cartaMia.valor<this.cartaSistema.valor){
-          this.puntosMios++;
+          this.puntosMios += 50; 
+          this.menorGanasteToast();
+        }else if(this.cartaMia.valor==this.cartaSistema.valor){
+          this.empateToast();
         }else{
-          this.puntosSistema++;
+          this.fallosGame++;
+          this.mayorPerdisteToast();
+          if(this.fallosGame == 3){
+            this.tresFallos();
+          }
         }
         break;
     }
 
     setTimeout(() => {
       this.reiniciarCartas();
-    }, 2000);
+    }, 1500);
+  }
+
+  tresFallos(){
+    this.disabledMayorMenor = false;
+    this.disabledIniciarJuego = true;
+    this.reiniciarGame = true;
+  
+    this.registroPuntos();
+    this.reiniciarCartas();
+  }
+
+  registroPuntos():void{
+    let formateador = new Intl.DateTimeFormat('es-AR', { dateStyle: 'medium', timeStyle: 'medium' });
+    let fecha = new Date();
+    let fechaFormateada = formateador.format(fecha);
+
+    let date: any = {
+      usuario: this.AuthService.usuarioLogueado,
+      fecha: fechaFormateada,
+      puntaje: this.puntosMios,
+      juego: "mayor-menor"
+    }
+
+    this.FirestoreService.AltaResultadoJuego(date);
   }
 
   sacoMiCarta():void{
@@ -116,12 +166,19 @@ export class MayorMenorComponent implements OnInit {
     this.reiniciarCartas();
 
     this.puntosMios = 0;
-    this.puntosSistema = 0;
+    this.fallosGame = 0;
+    this.reiniciarGame = false;
   }
 
   reiniciarCartas(){
     this.disabledMayorMenor = true;
-    this.disabledIniciarJuego = false;
+    
+
+    if(this.reiniciarGame){
+      this.disabledIniciarJuego = true;
+    }else{
+      this.disabledIniciarJuego = false;
+    }
     
     this.cartaSistema = {
       img:'../../../../assets/img/juegos/mayor menor/cartaAzul.png',
@@ -132,5 +189,30 @@ export class MayorMenorComponent implements OnInit {
       img:'../../../../assets/img/juegos/mayor menor/cartaAzul.png',
       valor : 0
     };
+  }
+
+  mayorGanasteToast()
+  {
+    this.ToastrService.success("Mayor.","Ganaste!!!");
+  }
+
+  menorGanasteToast()
+  {
+    this.ToastrService.success("Menor.","Ganaste!!!");
+  }
+
+  menorPerdisteToast()
+  {
+    this.ToastrService.error("Menor.","Perdiste!!!");
+  }
+
+  mayorPerdisteToast()
+  {
+    this.ToastrService.error("Mayor.","Perdiste!!!");
+  }
+
+  empateToast()
+  {
+    this.ToastrService.warning("Empate","Sera la Proxima!!");
   }
 }

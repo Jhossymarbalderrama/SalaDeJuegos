@@ -29,13 +29,21 @@
 				<button class="buttons" style="color: white;text-align: center;opacity: 80%;font-weight: bold;" (click)="registrarse()">¡Regístrese ahora!</button>
 				<hr>
 				
-				<button class="bAccesoRapido" (click)="onLoginAuto(1)">Invitado 1</button>
 
-				<button class="bAccesoRapido" (click)="onLoginAuto(2)">Invitado 2</button>
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2">
+					<div class="col" align="center">
+						<button class="buttons" (click)="onLoginAuto(1)">Invitado 1</button>
+					</div>
+					<div class="col" align="center">
+						<button class="buttons" (click)="onLoginAuto(2)">Invitado 2</button>
+					</div>
+				</div>				
 			</div>	
 		</div>
 	</div>	
 </div>
+
+
 
 <ng-template let-error let-text="text" #correoError>	
 	<div *ngIf="error?.required">

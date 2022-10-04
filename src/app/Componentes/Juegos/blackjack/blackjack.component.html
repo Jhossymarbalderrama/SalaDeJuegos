@@ -1,13 +1,18 @@
 <app-menu></app-menu>
 
 <div class="container">
-    <div class="box">        
+    <div class="box">
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1">
+            <div class="col" align="end">
+                <h4>Perdidas {{this.puntosSistema}}/3</h4>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1">
             <div class="col" align="center">
-                <h1>BLACK JACK</h1>                             
+                <h1>BLACK JACK</h1>
                 <h2>PUNTOS</h2>
-                <h1>{{this.puntosSistema}} | {{this.puntosMios}}</h1>
+                <h1>{{this.puntosMios}}</h1>
             </div>
         </div>
 
@@ -16,17 +21,18 @@
             <div class="col" align="start">
                 <h4>Sistema</h4>
                 <div class="sistemaCard">
-                    <img *ngIf="this.imagenesCartasSistema.length == 0" [src]="cartaSistema.img" height="216px" width="140px">
+                    <img *ngIf="this.imagenesCartasSistema.length == 0" [src]="cartaSistema.img" height="216px"
+                        width="140px">
 
                     <div *ngIf="this.imagenesCartasSistema.length != 0">
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2">
+                        <div class="row row-cols-1 row-cols-sm-4 row-cols-md-3">
                             <div *ngFor="let item of this.imagenesCartasSistema">
                                 <div class="col">
-                                    <img src="{{item}}" height="216px" width="140px"> 
+                                    <img src="{{item}}" height="216px" width="140px">
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="puntos">Suma Cartas: {{this.sumaCartasSistema}}</div>
             </div>
@@ -36,48 +42,49 @@
                 <h4>Tú</h4>
                 <div class="tuCard">
                     <img *ngIf="this.imagenesCartasMias.length == 0" [src]="cartaMia.img" height="216px" width="140px">
-                    
+
                     <div *ngIf="this.imagenesCartasMias.length != 0">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2">
                             <div *ngFor="let item of this.imagenesCartasMias">
                                 <div class="col">
-                                    <img src="{{item}}" height="216px" width="140px"> 
+                                    <img src="{{item}}" height="216px" width="140px">
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
                 <div class="puntos">Suma Cartas: {{this.sumaCartasMias}}</div>
             </div>
 
         </div>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 botones" align="center">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 botones" align="center">
 
             <div class="col">
-                <button class="button" (click)="iniciarJuego()"
-                    [disabled] = 'this.inicioJuego'>
+                <button class="button" (click)="iniciarJuego()" [disabled]='this.inicioJuego'>
                     Iniciar Juego
                 </button>
-                <button class="button" (click)="reiniciar()" style="margin-top:20px;">Reiniciar</button>
             </div>
 
             <div class="col">
-                <button class="button" style="background-color: green;"
-                (click)="pidoCarta()" [disabled] = 'this.meQuedo'>
+                <button class="button" style="background-color: green;" (click)="pidoCarta()" [disabled]='this.meQuedo'>
                     Pedir Otra
-                </button>
+                </button>                
             </div>
 
             <div class="col">
-                <button class="button" style="background-color: red;"
-                (click)="quedarme()" [disabled] = 'this.meQuedo'
-                >
+                <button class="button" style="background-color: red;" (click)="quedarme()" [disabled]='this.meQuedo'>
                     Quedarse
                 </button>
             </div>
 
-        </div>      
-    </div>	
-</div>
+        </div>
 
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 botones" align="center">
+            <div class="col">
+                <button *ngIf="this.juegoTerminado" class="button" (click)="this.reinicioJuego()">Volver a Jugar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

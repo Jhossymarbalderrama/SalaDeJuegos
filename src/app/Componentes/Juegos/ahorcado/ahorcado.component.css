@@ -1,3 +1,115 @@
+/* Celular */
+@media only screen and (max-width:767px){
+    .box {	
+        height: auto;
+        
+        margin-top: 8em;    
+        padding: 1em 2em 1em 1em;
+    
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+        max-width: 600px;	
+    
+        backdrop-filter: blur(1px);
+        background-color: rgba(255, 255, 255, 0.597);
+        z-index: 50;
+    }
+
+    .teclado{
+        padding:  0.5em;	
+        border-radius: 10px;
+        background-color: #0b3a879f;
+        align-content: center; 
+        margin-left: auto; 
+        margin-right: auto;
+
+        height: auto;
+        width: 380px;
+        border-radius: 5px;
+    }
+
+    .imgAhorcado{
+        height:auto;
+        width: 380px;
+    }
+}
+
+/* Tabled */
+@media only screen and (min-width:767px) and (max-width: 1023px){
+    .box {	
+        height: auto;
+        
+        margin-top: 8em;    
+        padding: 1em 2em 1em 1em;
+    
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+        max-width: 700px;	
+    
+        backdrop-filter: blur(1px);
+        background-color: rgba(255, 255, 255, 0.597);
+        z-index: 50;
+    }
+
+    .teclado{
+        padding:  0.5em;	
+        border-radius: 10px;
+        background-color: #0b3a879f;
+        align-content: center; 
+        margin-left: auto; 
+        margin-right: auto;
+
+        height: auto;
+        width: 480px;
+        border-radius: 5px;
+    }
+
+    .imgAhorcado{
+        height:auto;
+        width: 480px;
+    }
+}
+
+/* Large Screen */
+@media only screen and (min-width:1024px){
+    .box {	
+        height: auto;
+        
+        margin-top: 8em;    
+        padding: 1em 2em 1em 1em;
+    
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+        max-width: 800px;	
+    
+        backdrop-filter: blur(1px);
+        background-color: rgba(255, 255, 255, 0.597);
+        z-index: 50;
+    }
+
+    .teclado{
+        padding:  0.5em;	
+        border-radius: 10px;
+        background-color: #0b3a879f;
+        align-content: center; 
+        margin-left: auto; 
+        margin-right: auto;
+
+        height: auto;
+        width: 580px;
+        border-radius: 5px;
+    }
+
+    .imgAhorcado{
+        height:auto;
+        width: 580px;
+    }
+}
+
+
 .container{  
     display: flex;
     align-items: center;
@@ -6,21 +118,7 @@
 }
 
 
-.box {	
-    height: auto;
 
-    
-    margin-top: 6em;
-    padding:  5em;	
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-        0 10px 10px rgba(0,0,0,0.22);
-    max-width: 100%;	
-
-    backdrop-filter: blur(1px);
-    background-color: rgba(255, 255, 255, 0.597);
-    z-index: 50;
-}
 
 .box-reinicio {	
     margin-top: 6em;
@@ -35,19 +133,7 @@
     z-index: 51;
  }
 
-.teclado
-{
-    padding:  0.5em;	
-    border-radius: 10px;
-    background-color: #0b3a879f;
-    align-content: center; 
-    margin-left: auto; 
-    margin-right: auto;
 
-    height: auto;
-    width: 580px;
-    border-radius: 5px;
-}
 
 .palabra{
     letter-spacing: 10px;

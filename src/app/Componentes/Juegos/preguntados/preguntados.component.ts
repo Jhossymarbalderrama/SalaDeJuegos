@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ApiRestService } from 'src/app/Servicios/api-rest.service';
 import { ToastrService } from 'ngx-toastr';
 
+import { FirestoreService } from 'src/app/Servicios/firestore.service';
+import { AuthService } from 'src/app/Servicios/auth.service';
+
+
 @Component({
   selector: 'app-preguntados',
   templateUrl: './preguntados.component.html',
@@ -12,10 +16,6 @@ export class PreguntadosComponent implements OnInit {
 
   pListaPersonajesAPI:any;
   pListaObjectPersonajesAPI: any = [];
-  // Estructura JSON Personajes
-  // character : nombre
-  // image : url
-  // quote
 
   personajeSeleccionado: any;
   personajeIMG: string = "../../../../assets/img/juegos/preguntados/technicalDificult3.gif";  
@@ -26,9 +26,17 @@ export class PreguntadosComponent implements OnInit {
   technicalValue: number = 0;
   botonesHabilitados:boolean = true;
 
+  problemasTecnicosIMG:string = "../../../../assets/img/juegos/preguntados/technicalDificult3.gif";
+  fallosTotalesDelJuego: number = 3;
+  fallosGame: number = 0;
+  puntosGame: number = 0;
+  puntosJuego: number = 75;
+
   constructor(
     private ApiRestService:ApiRestService,
-    private Toastr:ToastrService
+    private Toastr:ToastrService,
+    private FirestoreService: FirestoreService,
+    private AuthService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -41,12 +49,9 @@ export class PreguntadosComponent implements OnInit {
         this.pListaPersonajesAPI = personaje;
         this.cargarArrayList(this.pListaPersonajesAPI);
     })
-
-    console.log(this.pListaObjectPersonajesAPI);
     setTimeout(() => {
       this.seleccionarPersonaje();
       this.cargoListaOpciones();           
-      console.log(this.listOpciones);
     }, 2500);    
     
   }
@@ -57,30 +62,67 @@ export class PreguntadosComponent implements OnInit {
     }    
   }
 
-  // iniciarJuego(){
-  //   this.reinicioJuego();
-  //   this.traerPersonajesAPI();    
-  // }
 
   compararOpcion(opcion: string){
-      if(this.opcionCorrecta === opcion){
-        this.esElPersonaje();
+      if(this.opcionCorrecta == opcion){
+        this.esElPersonaje();      
+        this.puntosGame += this.puntosJuego;
       }else{
         this.noEsElPersonaje();
+        this.fallosGame++;
+
+        if(this.fallosGame == this.fallosTotalesDelJuego){
+          this.registroPuntos();
+        }        
       }
   }
 
-  reinicioJuego(){     
+  registroPuntos():void{
+    let formateador = new Intl.DateTimeFormat('es-AR', { dateStyle: 'medium', timeStyle: 'medium' });
+    let fecha = new Date();
+    let fechaFormateada = formateador.format(fecha);
+
+    let date: any = {
+      usuario: this.AuthService.usuarioLogueado,
+      fecha: fechaFormateada,
+      puntaje: this.puntosGame,
+      juego: "preguntados"
+    }
+
+    console.log(date);
+    this.FirestoreService.AltaResultadoJuego(date);
+  }
+
+  reinicioPartida(){
     let object:any;
-    this.botonesHabilitados = false;
     this.pListaObjectPersonajesAPI = [];  
     this.personajeSeleccionado = object;
-    this.traerPersonajesAPI();   
+    this.personajeIMG = "../../../../assets/img/juegos/preguntados/technicalDificult3.gif";  
+    this.listOpciones = [];
+    this.habilitado = false;
+    this.opcionCorrecta = "";
+    this.disabledIniciarJuego = true;
+    this.technicalValue = 0;
+    this.botonesHabilitados = true;
+    this.problemasTecnicosIMG = "../../../../assets/img/juegos/preguntados/technicalDificult3.gif";
+    this.fallosGame = 0;
+    this.puntosGame = 0;
+    }
+
+
+  reinicioJuego(){     
+    let object:any;
+
     this.technicalDificult();
+    this.pListaObjectPersonajesAPI = [];  
+    this.personajeSeleccionado = object;
+    this.traerPersonajesAPI(); 
     
     this.listOpciones = [];
     this.habilitado = false; 
-    this.botonesHabilitados = true;   
+    this.botonesHabilitados = true; 
+
+    
   }
   
   technicalDificult(){
@@ -90,16 +132,31 @@ export class PreguntadosComponent implements OnInit {
       this.technicalValue = 0;
     }
 
-    switch (this.technicalValue) {
-      case 0:
-        this.personajeIMG= "../../../../assets/img/juegos/preguntados/technicalDificult.webp";
-        break;
-      case 1:
-        this.personajeIMG= "../../../../assets/img/juegos/preguntados/technicalDificult2.gif";
-        break;
-      case 2:
-        this.personajeIMG= "../../../../assets/img/juegos/preguntados/technicalDificult3.gif";
-        break;
+    if(this.fallosGame != this.fallosTotalesDelJuego){
+      switch (this.technicalValue) {
+        case 0:
+          this.personajeIMG = "../../../../assets/img/juegos/preguntados/technicalDificult.webp";
+          break;
+        case 1:
+          this.personajeIMG = "../../../../assets/img/juegos/preguntados/technicalDificult2.gif";
+          break;
+        case 2:
+          this.personajeIMG = "../../../../assets/img/juegos/preguntados/technicalDificult3.gif";
+          break;
+      }
+    }else{
+      let random : number = Math.floor(Math.random() * 2);
+      switch (random) {
+        case 0:
+          this.problemasTecnicosIMG = "../../../../assets/img/juegos/preguntados/technicalDificult.webp";
+          break;
+        case 1:
+          this.problemasTecnicosIMG = "../../../../assets/img/juegos/preguntados/technicalDificult2.gif";
+          break;
+        case 2:
+          this.problemasTecnicosIMG = "../../../../assets/img/juegos/preguntados/technicalDificult3.gif";
+          break;
+      }
     }
   }
 

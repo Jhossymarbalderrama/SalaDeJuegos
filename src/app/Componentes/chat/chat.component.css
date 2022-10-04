@@ -1,21 +1,54 @@
+/* Celular */
+@media only screen and (max-width:767px){
+	.box {	
+        padding: 1em 1em 1em 1em;
+        margin-top: 8em;
+        border-radius: 10px;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                0 10px 10px rgba(0,0,0,0.22);
+        min-width: 300px;	
+    
+        backdrop-filter: blur(1px);
+        background-color: #0c3b87aa;
+    } 
+}
+
+/* Tabled */
+@media only screen and (min-width:767px) and (max-width: 1023px){
+	.box {	
+        padding: 1em 1em 1em 1em;
+        margin-top: 8em;
+        border-radius: 10px;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                0 10px 10px rgba(0,0,0,0.22);
+        min-width: 500px;	
+    
+        backdrop-filter: blur(1px);
+        background-color: #0c3b87aa;
+    } 
+}
+
+/* Large Screen */
+@media only screen and (min-width:1024px){
+	.box {	
+        padding: 1em 1em 1em 1em;
+        margin-top: 8em;
+        border-radius: 10px;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                0 10px 10px rgba(0,0,0,0.22);
+        min-width: 600px;	
+
+        backdrop-filter: blur(1px);
+        background-color: #0c3b87aa;
+    }     
+}
+
 .container{  
 	 display: flex;
 	 align-items: center;
 	 justify-content: center;
 	 min-height: 100vh;	 
 }
-
-.box {	
-    padding: 1em 1em 1em 1em;
-	margin-top: 8em;
-	border-radius: 10px;
-	  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	min-width: 800px;	
-
-	backdrop-filter: blur(1px);
-	background-color: #0c3b87aa;
-} 
 
 .chat-window{
     bottom:0;

@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  usuarioLogueado: any;
+  //usuarioLogueado: any;
+  usuarioLogueado: any = {};
   
   constructor(private Router: Router) { 
     // if(this.usuarioLogueado == undefined){

@@ -25,6 +25,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViboritaComponent } from './Componentes/Juegos/viborita/viborita.component';
 import { BlackjackComponent } from './Componentes/Juegos/blackjack/blackjack.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListadoResultadosComponent } from './Componentes/Juegos/listado-resultados/listado-resultados.component';
+import { EncuestaComponent } from './Componentes/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { BlackjackComponent } from './Componentes/Juegos/blackjack/blackjack.com
     MayorMenorComponent,
     PreguntadosComponent,
     ViboritaComponent,
-    BlackjackComponent
+    BlackjackComponent,
+    ListadoResultadosComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
@@ -61,13 +66,14 @@ import { BlackjackComponent } from './Componentes/Juegos/blackjack/blackjack.com
     ErrorTailorModule.forRoot({
       errors: {
         useValue: {
-          required: '*Campo requerido',
+          required: '*Campo requerido',          
           minlength: ({ requiredLength, actualLength }) => 
                       `Expect ${requiredLength} but got ${actualLength}`,
           invalidAddress: error => `Address isn't valid`
         }
       }
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
